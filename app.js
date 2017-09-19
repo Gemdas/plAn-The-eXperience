@@ -67,7 +67,7 @@ $(document).ready(function(){
 
 
 			// Pagging location to Event brite API
-			var eventfulURL = "http://eventful.com/events?q=music";
+			/* var eventfulURL = "http://eventful.com/events?q=music";
 			function show_alert(){
 				var oArgs = {
 					app_key:"sxjH4rQHGzt7d3v4",
@@ -83,10 +83,25 @@ $(document).ready(function(){
 			  });
 
 			}
-
 			show_alert();
 			
-		})
+		}) */
+
+	// Click function for categories
+	$(".category-image").on("click", function(event) {
+		console.log("click worked!");
+		console.log($(this).data("topic"));
+	})
+
+	// Click function for Search
+	$("#searchBtn").on("click", function(event) {
+		event.preventDefault();
+		console.log("search click worked!");
+		var searchInput = $("#searchInput").val().trim();
+		console.log(searchInput);
+		$("form input").val("");
+	})
+});
 
 
 
@@ -106,8 +121,8 @@ $(document).ready(function(){
 			.done(function(response){
 				console.log('successful '+ response);
 			})
-			*/
+			
 
 		})
-	})	
+	})	*/
 
