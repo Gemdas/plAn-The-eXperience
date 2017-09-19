@@ -38,7 +38,12 @@ $(document).ready(function(){
 				console.log('successful '+ response);
 
 		})
-	})			
+	})
+
+	// On-click function for category boxes
+	$(".category-image").on("click", function(event) {
+		
+	})		
 
 })
 })
