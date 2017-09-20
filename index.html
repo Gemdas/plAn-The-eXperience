@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Plan The Experience</title>
+	<title>ATXperience</title>
 	
 	<!-- Compressed CSS -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css"/>
+	<link rel="stylesheet" href="foundation/css/foundation.css">
+    <link rel="stylesheet" href="foundation/css/app.css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
 
 <div class="wrapper">
-	<div class="top-bar" id="example-menu">
+	<div class="top-bar navigation" id="example-menu">
 		<div class="top-bar-left">
-			<ul class="dropdown menu" data-dropdown-menu>
+			<ul class="dropdown menu navigation">
 				<li class="menu-text">ATXperience</li>
 			</ul>
 		</div>
@@ -21,29 +23,74 @@
 
 	<div class="row search-div">
 		<div class="medium-12 columns">
+			<div class="logo-div"><img src="assets/images/ATXperience.png" class="logo"></div>
 			<form>
 				<div class="input-group">
-					<input class="input-group-field" type="text" placeholder="Event Name or Keyword">
+					<input class="input-group-field" type="text" placeholder="Event Name or Keyword" id="searchInput">
 					<div class="input-group-button">
-						<input type="submit" class="button" value="Search">
+						<input type="submit" class="button" id="searchBtn">
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="small-12 medium-12 columns">
-			<img class="thumbnail category-image" src="assets/images/music.jpg">
-			<img class="thumbnail category-image" src="assets/images/food.jpg">
-			<img class="thumbnail category-image" src="assets/images/wellness.jpg">
+	<div class="categories">
+		<div class="row">
+			<div class="small-12 columns">
+				<div class="flip category-img">
+					<div class="front">
+						<img class="thumbnail" src="assets/images/music.jpg">
+					</div>
+					<div class="back" data-topic="music">
+						<h3 class="back-text">Eccletic taste? We got your back!</h3>
+					</div>
+				</div>
+				<div class="flip category-img">
+					<div class="front">
+						<img class="thumbnail" src="assets/images/food.jpg">
+					</div>
+					<div class="back" data-topic="food">
+						<h3 class="back-text">Find your noms</h3>
+					</div>
+				</div>
+				<div class="flip category-img">
+					<div class="front">
+						<img class="thumbnail" src="assets/images/wellness.jpg">
+					</div>
+					<div class="back" data-topic="wellness">
+						<h3 class="back-text">Good vibes</h3>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="small-12 medium-12 columns">
-			<img class="thumbnail category-image" src="assets/images/family.jpg">
-			<img class="thumbnail category-image" src="assets/images/art.jpg">
-			<img class="thumbnail category-image" src="assets/images/beer.jpg">
+		<div class="row">
+			<div class="small-12 columns">
+				<div class="flip category-img">
+					<div class="front">
+						<img class="thumbnail" src="assets/images/family.jpg">
+					</div>
+					<div class="back" data-topic="family">
+						<h3 class="back-text">Fun for the whole family!</h3>
+					</div>
+				</div>
+				<div class="flip category-img">
+					<div class="front">
+						<img class="thumbnail" src="assets/images/art.jpg">
+					</div>
+					<div class="back" data-topic="art">
+						<h3 class="back-text">Where art thou?</h3>
+					</div>
+				</div>
+				<div class="flip category-img">
+					<div class="front">
+						<img class="thumbnail" src="assets/images/beer.jpg">
+					</div>
+					<div class="back" data-topic="beer">
+						<h3 class="back-text">Cheers!</h3>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -51,29 +98,26 @@
 
 </div>
 
-<!-- Compressed JavaScript -->
-<script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"</script>
+<!-- Compressed JavaScript for Foundation -->
+<script src="foundation/js/vendor/jquery.js"></script>
+<script src="foundation/js/vendor/what-input.js"></script>
+<script src="foundation/js/vendor/foundation.js"></script>
+<script src="foundation/js/app.js"></script>
 
 <!-- jQuery-->
-<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
 
-<!-- Moment.js -->
-<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
-
-
-
- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2QtFLDPl4gg-fPzzgUGpcUeiKcOAblwE&libraries=places&callback=initMap" async defer></script>
-
-<script type="text/javascript" src="http://api.eventful.com/js/api">
-
-</script>
 
 <script src="javascript/app.js" type="text/javascript" charset="utf-8" async defer></script>
 
-
+<script>
+	$(function(){
+		$(".flip").flip({
+			trigger: 'hover'
+		});
+	});
+</script>
 
 
 </body>
