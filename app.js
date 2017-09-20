@@ -88,7 +88,7 @@ $(document).ready(function(){
 		}) */
 
 	// Click function for categories
-	$(".category-image").on("click", function(event) {
+	$(".back").on("click", function(event) {
 		console.log("click worked!");
 		console.log($(this).data("topic"));
 	})

@@ -1,3 +1,23 @@
+.navigation {
+	background-color: #415c61 !important;
+}
+
+.navigation li {
+	color: #ffffff !important;
+	font-family: 'Amatic SC', cursive;
+	font-size: 36px;
+}
+
+.logo {
+	display: inline-block;
+	margin: 25px;
+}
+
+.logo-div {
+	margin: auto;
+	text-align: center;
+}
+
 .event-img {
   width: 200px;
   height: auto;
@@ -10,26 +30,46 @@
   margin-bottom: 1rem;
 }
 
-.categories {
-	margin: auto;
-	width: 100%;
-	text-align: center;
-}
-
-.category-image {
-	margin-top: 20px;
-	margin-left: 20px;
-	display: inline-block;
-}
-
-.category-image img {
-	width: 300px;
-	height: 250px;
-}
-
 .search-div {
 	width: 100%;
 	margin: auto;
-	padding: 100px;
+	padding: 50px;
 	background-image: url("../images/skyline.jpg")
+}
+
+.front {
+	height: 250px !important;
+    width: 300px !important;
+    margin: 0 auto;
+}
+
+.category-img {
+	display: inline-block !important;
+	float: left;
+	margin: 5px;
+}
+
+.flip {
+    height: 275px;
+    width: 350px;
+    display: inline-block;
+}
+
+.flip img {
+    width: 350px;
+    height: 275px;
+}
+
+.flip .back {
+    width: 350px;
+    height: 275px;
+    background: #415c61;
+    color: #fff;
+}
+
+.back-text {
+	text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 60px;
+	padding: 5%;
 }
