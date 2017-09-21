@@ -24,50 +24,12 @@ $(document).ready(function(){
 			console.log('longitude is '+long);
 
 		})*/
-		var map;
-		var infowindow;
+	
 
-		function initMap() {
-			var pyrmont = {lat: -33.867, lng: 151.195};
-
-			map = new google.maps.Map(document.getElementById('map'), {
-				center: pyrmont,
-				zoom: 15
-			});
-
-			infowindow = new google.maps.InfoWindow();
-			var service = new google.maps.places.PlacesService(map);
-			service.nearbySearch({
-				location: pyrmont,
-				radius: 500,
-				type: ['store']
-			}, callback);
-		}
-
-		function callback(results, status) {
-			if (status === google.maps.places.PlacesServiceStatus.OK) {
-				for (var i = 0; i < results.length; i++) {
-					createMarker(results[i]);
-				}
-			}
-		}
-
-		function createMarker(place) {
-			var placeLoc = place.geometry.location;
-			var marker = new google.maps.Marker({
-				map: map,
-				position: place.geometry.location
-			});
-
-			google.maps.event.addListener(marker, 'click', function() {
-				infowindow.setContent(place.name);
-				infowindow.open(map, this);
-			});
-		}
-
+	
 
 			// Pagging location to Event brite API
-			/* var eventfulURL = "http://eventful.com/events?q=music";
+			var eventfulURL = "http://eventful.com/events?q=music";
 			function show_alert(){
 				var oArgs = {
 					app_key:"sxjH4rQHGzt7d3v4",
@@ -79,13 +41,47 @@ $(document).ready(function(){
 				};
 				EVDB.API.call("/events/search", oArgs, function(oData) {
 			      // Note: this relies on the custom toString() methods below
-			      console.log(oData);
+			      
+			      var eventArray=oData.events.event;
+			      console.log(eventArray);
+
+			      for (var i=0 ; i < eventArray.length;  i++) {
+			      	
+			      if (eventArray[i].image === null) {
+			      	var thumbnailUrl = './assets/images/ATXperience.png';
+			      } else {
+			      	var thumbnailUrl = eventArray[i].image.medium.url;
+			      }
+
+			      var eventCard= $('<div>');
+			      eventCard.addClass('media-object event-results');
+			      var imgSection=$('<div>');
+			      imgSection.addClass('media-object-section');
+			      var eventImg= $('<img>');
+			      eventImg.addClass('thumbnail event-img');
+			      eventImg.attr('src',thumbnailUrl);
+			      var detailSection=$('<div>');
+			      detailSection.addClass('media-object-section');
+			      var eventTitle=$('<h4>');
+			      eventTitle.html(eventArray[i].title);
+			      var eventDescription=$('<p>');
+			      eventDescription.html(eventArray[i].description);
+
+			      imgSection.append(eventImg);
+			      detailSection.append(eventTitle);
+			      detailSection.append(eventDescription);
+			      eventCard.append(imgSection);
+			      eventCard.append(detailSection);
+			      $('#eventList').append(eventCard);
+
+			      }
 			  });
+
 
 			}
 			show_alert();
 			
-		}) */
+		}) 
 
 	// Click function for categories
 	$(".back").on("click", function(event) {
@@ -104,7 +100,7 @@ $(document).ready(function(){
 		location.assign("results.html?q="+encodeURI(searchInput));
 		$("form input").val("");
 	})
-});
+
 
 
 
