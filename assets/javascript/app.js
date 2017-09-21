@@ -91,6 +91,8 @@ $(document).ready(function(){
 	$(".back").on("click", function(event) {
 		console.log("click worked!");
 		console.log($(this).data("topic"));
+		var categoryTopic=$(this).data("topic");
+		location.assign("results.html?q="+encodeURI(categoryTopic));
 	})
 
 	// Click function for Search
@@ -98,7 +100,8 @@ $(document).ready(function(){
 		event.preventDefault();
 		console.log("search click worked!");
 		var searchInput = $("#searchInput").val().trim();
-		console.log(searchInput);
+		console.log(encodeURI(searchInput));
+		location.assign("results.html?q="+encodeURI(searchInput));
 		$("form input").val("");
 	})
 });
