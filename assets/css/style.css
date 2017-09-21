@@ -8,6 +8,17 @@
 	font-size: 36px;
 }
 
+.navigation a {
+	color: #ffffff !important;
+}
+
+#event-title {
+	font-family: 'Amatic SC', cursive;
+	text-align: center;
+	font-size: 70px;
+	font-weight: bold;
+}
+
 .logo {
 	display: inline-block;
 	margin: 25px;
@@ -72,4 +83,33 @@
     font-family: 'Amatic SC', cursive;
     font-size: 60px;
 	padding: 5%;
+}
+
+.rec-header {
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+    font-size: 48px;
+}
+
+.rec-panel {
+	float: left;
+	width: 33%;
+	margin: 2px;
+}
+
+.recommendations {
+	width: 100%;
+	margin: auto;
+}
+
+.text-center {
+	text-align: center;
+}
+
+#event-date {
+	margin-top: -20px;
+}
+
+.list {
+	list-style-type: none;
 }

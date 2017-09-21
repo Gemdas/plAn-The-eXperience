@@ -1,37 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
-	<title id="page-title">Something has gone wrong</title>
+	<title id="page-title">Event Info</title>
+	<link rel="stylesheet" href="foundation/css/foundation.css">
+    <link rel="stylesheet" href="foundation/css/app.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
 </head>
 <body>
-	<div class="row">
-		<div class="small-12 columns">
-			<h1 id="Event-Title">Event Title</h1>
-			<div class="row">
-				<div class="small-9 columns">
-					<p id="Event-Description">This is where the Description goes</p>
-					<h3>Useful Info</h3>
-					<ul id="Event-Info">this is where the data goes</ul>	
-				</div>
-				<div class="small-3 columns">
-				<img src="http://static.eventful.com/images/medium/I0-001/	001/321/255-2.gif" id="Event-Image">
-				</div>
+
+<div class="wrapper">
+	<div class="top-bar navigation">>
+		<div class="top-bar-left">
+			<ul class="dropdown menu navigation">
+				<li class="menu-text"><a href="index.html">ATXperience</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="event-page-info">
+		<h1 id="event-title" class="event-info">Event Title</h1>
+		<p id="event-date" class="event-info text-center">Date Goes Here</p>
+		<div class="row">
+			<div class="small-12 column">
+				<ul class="list">
+					<li id="event-venue" class="event-info">Venue Name Goes Here </li>
+					<li id="event-address" class="event-info">Venue Address Goes Here</li>
+					<li id="event-description" class="event-info">Description Goes Here</li>
+				</ul>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-  		<div class="small-4 columns" id="Food-Suggestion">
-  			<h2 class="text-center">FOOD</h2>
-  		</div>
-  		<div class="small-4 columns" id="Preceding-Suggestion">
-  			<h2 class="text-center">PRECEDING</h2>
-  		</div>
-  		<div class="small-4 columns" id="Following-Suggestion">
-  			<h2 class="text-center">FOLLOWING</h2>
-  		</div>
+
+	<div class="row recommendations">
+		<div class="small-4 column" id="Food-Suggestion">
+			<div class="callout rec-panel success">
+				<h2 class="text-center rec-header">PREGAME</h2>
+			</div>
+		</div>
+		<div class="small-4 column" id="Preceding-Suggestion">
+			<div class="callout rec-panel primary">
+				<h2 class="text-center rec-header">BITES</h2>
+			</div>
+		</div>
+		<div class="small-4 column" id="Following-Suggestion">
+			<div class="callout rec-panel alert">
+				<h2 class="text-center rec-header">AFTER PARTY</h2>
+			</div>
+		</div>
 	</div>
-	
+</div>	
+
+<script src="assets/javascript/index.js.js" type="text/javascript" charset="utf-8" async defer></script>
 	
 </body>
 </html>
