@@ -9,9 +9,10 @@ $(document).ready(function(){
 	//send the eventful api the id
 	EVDB.API.call("/events/get", oArgs, function(oData) {
 		//populate the event page
-		console.log(oData);
+		var eventTime = oData.start_time;
+		var formattedDate = moment(eventTime).format("MMMM Do YYYY, h:mm a");
 		$("#event-title").text(oData.title);
-		$("#event-date").text(oData.start_time);
+		$("#event-date").text(formattedDate);
 		$("#event-venue").text(oData.venue_name);
 		$("#event-address").text(oData.address);
 		$("#event-URL").text(oData.url);
