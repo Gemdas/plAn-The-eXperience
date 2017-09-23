@@ -18,6 +18,10 @@
 	text-align: center;
 }
 
+.input-header {
+	margin: 5px 0px;
+}
+
 .event-img {
   width: 200px;
   height: auto;
