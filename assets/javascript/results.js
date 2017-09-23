@@ -1,25 +1,41 @@
 $(document).ready(function(){
-	var keyword
+
+	// Grab query parameter from URL
+	var urlQueryString = location.search;
+	var encodedWords = urlQueryString.split('=');
+	var keywords = decodeURI(encodedWords[1]);
+
+	$("#searchInput").val(keywords);
+
+	// Click function for Search
+	$("#searchBtn").on("click", function(event) {
+		event.preventDefault();
+		console.log("search click worked!");
+		var searchInput = $("#searchInput").val().trim();
+		console.log(encodeURI(searchInput));
+		location.assign("results.html?q="+encodeURI(searchInput));
+	})
+
 
 	// Pagging location to Event brite API
-	var eventfulURL = "http://eventful.com/events?q=music";
+
+
 	function show_alert(){
 		var oArgs = {
 			app_key:"sxjH4rQHGzt7d3v4",
-			//id: '20218701',
-
+			keywords: keywords,
 			page_size: 25,
 			where: "Austin"
 
 		};
 		EVDB.API.call("/events/search", oArgs, function(oData) {
 	      // Note: this relies on the custom toString() methods below
-	      
+
 	      var eventArray=oData.events.event;
 	      console.log(eventArray);
 
 	      for (var i=0 ; i < eventArray.length;  i++) {
-	      	
+
 	      if (eventArray[i].image === null) {
 	      	var thumbnailUrl = './assets/images/ATXperience.png';
 	      } else {
@@ -54,5 +70,5 @@ $(document).ready(function(){
 	}
 	show_alert();
 
-	}) 
+	})
 
