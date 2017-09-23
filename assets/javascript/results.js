@@ -4,8 +4,14 @@ $(document).ready(function(){
 	var urlQueryString = location.search;
 	var encodedWords = urlQueryString.split('=');
 	var keywords = decodeURI(encodedWords[1]);
+	console.log(keywords);
 
-	$("#searchInput").val(keywords);
+	if (keywords === "undefined") {
+		$("#searchInput").empty();
+	} else {
+		$("#searchInput").val(keywords);
+	};
+
 
 	// Click function for Search
 	$("#searchBtn").on("click", function(event) {
@@ -29,7 +35,7 @@ $(document).ready(function(){
 	function show_alert(){
 		var oArgs = {
 			app_key:"sxjH4rQHGzt7d3v4",
-			keywords: keywords,
+			keywords: ((keywords === "undefined") ? "" : keywords),
 			page_size: 25,
 			where: "Austin"
 
