@@ -2,7 +2,7 @@ $(document).ready(function(){
 	var keyword
 
 	// Pagging location to Event brite API
-	var eventfulURL = "http://eventful.com/events?q=music";
+	var eventfulURL = "http://eventful.com/events?";
 	function show_alert(){
 		var oArgs = {
 			app_key:"sxjH4rQHGzt7d3v4",
