@@ -18,6 +18,8 @@ $(document).ready(function(){
 
 
 	// Pagging location to Event brite API
+
+
 	function show_alert(){
 		var oArgs = {
 			app_key:"sxjH4rQHGzt7d3v4",
