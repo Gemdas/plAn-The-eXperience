@@ -1,5 +1,6 @@
 .navigation {
 	background-color: #415c61 !important;
+	list-style-type: none;
 }
 
 .navigation li {
@@ -29,10 +30,6 @@
 	text-align: center;
 }
 
-.input-header {
-	margin: 5px 0px;
-}
-
 .event-img {
   width: 200px;
   height: auto;
@@ -53,21 +50,13 @@
 }
 
 .front {
-	height: 250px !important;
-    width: 300px !important;
-    margin: 0 auto;
-}
-
-.category-img {
-	display: inline-block !important;
-	float: left;
-	margin: 5px;
+	height: 275px !important;
+    width: 350px !important;
 }
 
 .flip {
     height: 275px;
     width: 350px;
-    display: inline-block;
 }
 
 .flip img {
@@ -86,7 +75,6 @@
 	text-align: center;
     font-family: 'Amatic SC', cursive;
     font-size: 60px;
-	padding: 5%;
 }
 
 .rec-header {
@@ -96,7 +84,6 @@
 }
 
 .rec-panel {
-	float: left;
 	width: 100%;
 	margin: 2px;
 }
