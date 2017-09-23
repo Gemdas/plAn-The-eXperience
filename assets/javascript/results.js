@@ -77,6 +77,12 @@ $(document).ready(function(){
 	      eventTitle.html(eventArray[i].title);
 	      var eventDescription=$('<p>');
 	      eventDescription.html(eventArray[i].description);
+          
+	      	eventDescription.shorten(({
+	      		"showChars" : 150,
+	      		"moreText"	: "<br>See More...",
+	      		"lessText"	: "<br>Less...",
+	      	}));
 
 	      imgSection.append(eventImg);
 				eventTitleLink.append(eventTitle);
@@ -93,5 +99,5 @@ $(document).ready(function(){
 	}
 	show_alert();
 
-	})
+})
 
