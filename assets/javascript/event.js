@@ -26,7 +26,7 @@ $(document).ready(function(){
 			url:"https://developers.zomato.com/api/v2.1/search?apikey=d05924ed72ee85e73cf712157d5cd73c&entity_type=city&count=5&lat="+lat+"&lon="+long+"&radius=8048&sort=rating",
 		}).done(function(results){
 			console.log(results);
-			eateries=results.restaurants;
+			var eateries=results.restaurants;
 			//populate the eats catagory
 			for (var i = 0; i < eateries.length; i++) {
 				$("#food-rec-name"+i).text(eateries[i].name);
@@ -37,8 +37,7 @@ $(document).ready(function(){
 				$("#food-rec-cost"+i).text("Cost for two is: "+eateries[i].average_cost_for_two);
 				$("#food-rec-location"+i).text(eateries[i].location.address);
 			}
-		}
-		});
+		})
 	});
 	 
 	
