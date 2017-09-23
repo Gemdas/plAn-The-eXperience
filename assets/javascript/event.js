@@ -15,7 +15,7 @@ $(document).ready(function(){
 		$("#event-date").text(formattedDate);
 		$("#event-venue").text(oData.venue_name);
 		$("#event-address").text(oData.address);
-		$("#event-URL").text(oData.url);
+		$("#event-URL").attr("href", oData.url);
 		$("#event-description").html(oData.description);
 		//get the longituide & lattitude
 		var lat=oData.latitude;
@@ -33,7 +33,7 @@ $(document).ready(function(){
 				$("#food-rec-name"+i).text(eateries[i].restaurant.name);
 				$("#food-rec-image"+i).attr("src", eateries[i].restaurant.featured_image);
 				$("#food-rec-rating"+i).text((eateries[i].restaurant.user_rating.aggregate_rating)+"/5.0");
-				$("#food-rec-URL"+i).text(eateries[i].restaurant.url);
+				$("#food-rec-URL"+i).attr("href", eateries[i].restaurant.url);
 				$("#food-rec-category"+i).text(eateries[i].restaurant.cuisines);
 				$("#food-rec-cost"+i).text("Cost for two is: "+eateries[i].restaurant.average_cost_for_two);
 				$("#food-rec-location"+i).text(eateries[i].restaurant.location.address);
