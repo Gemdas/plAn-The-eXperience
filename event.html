@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="foundation/css/foundation.css">
     <link rel="stylesheet" href="foundation/css/app.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" href="foundation/css/foundation-icons/foundation-icons.css" />
 	<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
 </head>
 <body>
@@ -12,12 +13,19 @@
 <div class="wrapper">
 	<div class="top-bar navigation" id="example-menu">
 		<div class="top-bar-left">
-			<ul class="dropdown menu navigation">
+			<ul class="menu navigation">
 				<li class="menu-text"><a href="index.html">ATXperience</a></li>
 			</ul>
 		</div>
+		<div class="top-bar-right">
+			<button class="button" data-open="itineraryModal">Your Itinerary</button>		
+		</div>
 	</div>
 	<div id="map"></div>
+
+	<div class="small reveal" id="itineraryModal" data-reveal>
+
+	</div>
 
 	<div class="event-page-info">
 		<h1 id="event-title" class="event-info">Event Title</h1>
@@ -41,12 +49,12 @@
 				<div class="grid-x collapse">
 					<div class="medium-4 cell">
 						<ul class="vertical tabs" data-active-collapse="true" data-tabs id="example-tabs">
-							<li class=" tabs-title is-active"><a href="#pre-rec-panel0" id="pre-rec-name0" aria-selected="true">Rec 1 Name</a></li>
-							<li class="tabs-title"><a href="#pre-rec-panel1" id="pre-rec-name1">Rec 2 Name</a></li>
-							<li class="tabs-title"><a href="#pre-rec-panel2" id="pre-rec-name2">Rec 3 Name</a></li>
-							<li class="tabs-title"><a href="#pre-rec-panel3" id="pre-rec-name3">Rec 4 Name</a></li>
-							<li class="tabs-title"><a href="#pre-rec-panel4" id="pre-rec-name4">Rec 5 Name</a></li>
-							<li class="tabs-title"><a href="#pre-rec-panel5" id="pre-rec-name5">Rec 6 Name</a></li>
+							<li class=" tabs-title is-active"><i class="fi-plus icon" id="pre-rec-icon0" data-state="plus"></i><a href="#pre-rec-panel0" id="pre-rec-name0" aria-selected="true">Rec 1 Name</a></li>
+							<li class="tabs-title"><i class="fi-plus icon" id="pre-rec-icon1" data-state="plus"></i><a href="#pre-rec-panel1" id="pre-rec-name1">Rec 2 Name</a></li>
+							<li class="tabs-title"><i class="fi-plus icon" id="pre-rec-icon2" data-state="plus"></i><a href="#pre-rec-panel2" id="pre-rec-name2">Rec 3 Name</a></li>
+							<li class="tabs-title"><i class="fi-plus icon" id="pre-rec-icon3" data-state="plus"></i><a href="#pre-rec-panel3" id="pre-rec-name3">Rec 4 Name</a></li>
+							<li class="tabs-title"><i class="fi-plus icon" id="pre-rec-icon4" data-state="plus"></i><a href="#pre-rec-panel4" id="pre-rec-name4">Rec 5 Name</a></li>
+							<li class="tabs-title"><i class="fi-plus icon" id="pre-rec-icon5" data-state="plus"></i><a href="#pre-rec-panel5" id="pre-rec-name5">Rec 6 Name</a></li>
 						</ul>
 					</div>
 					<div class="medium-8 cell">
@@ -109,13 +117,13 @@
 				<h2 class="text-center rec-header">BITES</h2>
 				<div class="grid-x collapse">
 					<div class="medium-4 cell">
-						<ul class="vertical tabs" data-active-collapse="true" data-tabs id="example-tabs">
-							<li class="tabs-title is-active"><a href="#food-rec-panel0" id="food-rec-name0" aria-selected="true">Rec 1 Name</a></li>
-							<li class="tabs-title"><a href="#food-rec-panel1" id="food-rec-name1">Rec 2 Name</a></li>
-							<li class="tabs-title"><a href="#food-rec-panel2" id="food-rec-name2">Rec 3 Name</a></li>
-							<li class="tabs-title"><a href="#food-rec-panel3" id="food-rec-name3">Rec 4 Name</a></li>
-							<li class="tabs-title"><a href="#food-rec-panel4" id="food-rec-name4">Rec 5 Name</a></li>
-							<li class="tabs-title"><a href="#food-rec-panel5" id="food-rec-name5">Rec 6 Name</a></li>
+						<ul class="vertical tabs" data-tabs id="example-tabs">
+							<li class="tabs-title is-active"><i class="fi-plus icon" id="food-rec-icon0" data-state="plus"></i><a href="#food-rec-panel0" id="food-rec-name0" aria-selected="true">Rec 1 Name</a></li>
+							<li class="tabs-title"><i class="fi-plus icon" id="food-rec-icon1" data-state="plus"></i><a href="#food-rec-panel1" id="food-rec-name1">Rec 2 Name</a></li>
+							<li class="tabs-title"><i class="fi-plus icon" id="food-rec-icon2" data-state="plus"></i><a href="#food-rec-panel2" id="food-rec-name2">Rec 3 Name</a></li>
+							<li class="tabs-title"><i class="fi-plus icon" id="food-rec-icon3" data-state="plus"></i><a href="#food-rec-panel3" id="food-rec-name3">Rec 4 Name</a></li>
+							<li class="tabs-title"><i class="fi-plus icon" id="food-rec-icon4" data-state="plus"></i><a href="#food-rec-panel4" id="food-rec-name4">Rec 5 Name</a></li>
+							<li class="tabs-title"><i class="fi-plus icon" id="food-rec-icon5" data-state="plus"></i><a href="#food-rec-panel5" id="food-rec-name5">Rec 6 Name</a></li>
 						</ul>
 					</div>
 					<div class="medium-8 cell">
@@ -180,12 +188,12 @@
 				<div class="grid-x collapse">
 					<div class="medium-4 cell">
 						<ul class="vertical tabs" data-active-collapse="true" data-tabs id="example-tabs">
-							<li class="tabs-title is-active"><a href="#post-rec-panel0" id="post-rec-name0" aria-selected="true">Rec 1 Name</a></li>
-							<li class="tabs-title"><a href="#post-rec-panel1" id="post-rec-name1">Rec 2 Name</a></li>
-							<li class="tabs-title"><a href="#post-rec-panel2" id="post-rec-name2">Rec 3 Name</a></li>
-							<li class="tabs-title"><a href="#post-rec-panel3" id="post-rec-name3">Rec 4 Name</a></li>
-							<li class="tabs-title"><a href="#post-rec-panel4" id="post-rec-name4">Rec 5 Name</a></li>
-							<li class="tabs-title"><a href="#post-rec-panel5" id="post-rec-name5">Rec 6 Name</a></li>
+							<li class="tabs-title is-active"><i class="fi-plus icon" data-state="plus" id="post-rec-icon1"></i><a href="post-rec-panel0" id="post-rec-name0" aria-selected="true">Rec 1 Name</a></li>
+							<li class="tabs-title"><i class="fi-plus icon" data-state="plus" id="post-rec-icon1"></i><a href="#post-rec-panel1" id="post-rec-name1">Rec 2 Name</a></li>
+							<li class="tabs-title"><i class="fi-plus icon" data-state="plus" id="post-rec-icon2"></i><a href="#post-rec-panel2" id="post-rec-name2">Rec 3 Name</a></li>
+							<li class="tabs-title"><i class="fi-plus icon" data-state="plus" id="post-rec-icon3"></i><a href="#post-rec-panel3" id="post-rec-name3">Rec 4 Name</a></li>
+							<li class="tabs-title"><i class="fi-plus icon" data-state="plus" id="post-rec-icon4"></i><a href="#post-rec-panel4" id="post-rec-name4">Rec 5 Name</a></li>
+							<li class="tabs-title"><i class="fi-plus icon" data-state="plus" id="post-rec-icon5"></i><a href="#post-rec-panel5" id="post-rec-name5">Rec 6 Name</a></li>
 						</ul>
 					</div>
 					<div class="medium-8 cell">

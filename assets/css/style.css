@@ -111,3 +111,15 @@
 .list {
 	list-style-type: none;
 }
+
+li i {
+	display: inline-block;
+	position: absolute;
+	top: 15px;
+	left: 5px;
+}
+
+li {
+	display: inline-block;
+	position: relative;
+}
