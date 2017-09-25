@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title id="page-title">Event Info</title>
+	<link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
 	<link rel="stylesheet" href="foundation/css/foundation.css">
     <link rel="stylesheet" href="foundation/css/app.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -23,8 +24,15 @@
 	</div>
 	<div id="map"></div>
 
-	<div class="small reveal" id="itineraryModal" data-reveal>
-
+	<div class="small reveal page-font itinerary" id="itineraryModal" data-reveal>
+		<table class="hover" id="itineraryTable">
+			<thead>
+				<th></th>
+				<th>To Do</th>
+				<th>Time</th>
+			</thead>
+			<tbody></tbody>
+		</table>
 	</div>
 
 	<div class="event-page-info">
@@ -33,7 +41,7 @@
 		<div class="grid-x">
 			<div class="small-12 cell">
 				<ul class="list">
-					<li id="event-venue" class="event-info">Venue Name Goes Here </li>
+					<li id="event-venue" class="event-info">Venue Name Goes Here</li>
 					<li id="event-address" class="event-info">Venue Address Goes Here</li>
 					<li id="event-description" class="event-info">Description Goes Here</li>
 					<li><a href="#" id="event-URL" class="event-info">Event Website</a></li>
@@ -48,8 +56,8 @@
 				<h2 class="text-center rec-header">PREGAME</h2>
 				<div class="grid-x collapse">
 					<div class="medium-4 cell">
-						<ul class="vertical tabs" data-active-collapse="true" data-tabs id="example-tabs">
-							<li class=" tabs-title is-active"><i class="fi-plus icon" id="pre-rec-icon0" data-state="plus"></i><a href="#pre-rec-panel0" id="pre-rec-name0" aria-selected="true">Rec 1 Name</a></li>
+						<ul class="vertical tabs rec-list page-font" data-active-collapse="true" data-tabs id="example-tabs">
+							<li class="tabs-title is-active"><i class="fi-plus icon" id="pre-rec-icon0" data-state="plus"></i><a href="#pre-rec-panel0" id="pre-rec-name0" aria-selected="true">Rec 1 Name</a></li>
 							<li class="tabs-title"><i class="fi-plus icon" id="pre-rec-icon1" data-state="plus"></i><a href="#pre-rec-panel1" id="pre-rec-name1">Rec 2 Name</a></li>
 							<li class="tabs-title"><i class="fi-plus icon" id="pre-rec-icon2" data-state="plus"></i><a href="#pre-rec-panel2" id="pre-rec-name2">Rec 3 Name</a></li>
 							<li class="tabs-title"><i class="fi-plus icon" id="pre-rec-icon3" data-state="plus"></i><a href="#pre-rec-panel3" id="pre-rec-name3">Rec 4 Name</a></li>
@@ -59,7 +67,7 @@
 					</div>
 					<div class="medium-8 cell">
 						<div class="tabs-content" data-tabs-content="example-tabs">
-							<div class="tabs-panel is-active" id="pre-rec-panel0">
+							<div class="tabs-panel is-active page-font" id="pre-rec-panel0">
 								<img src="assets/images/ATXperience.png" width="200px" height="200px" id="pre-rec-image0">
 								<div id="pre-rec-rating0">Rec 1: Rating</div>
 								<div id="pre-rec-location0">Rec 1: Location</div>
@@ -117,7 +125,7 @@
 				<h2 class="text-center rec-header">BITES</h2>
 				<div class="grid-x collapse">
 					<div class="medium-4 cell">
-						<ul class="vertical tabs" data-tabs id="example-tabs">
+						<ul class="vertical tabs rec-list page-font" data-tabs id="example-tabs">
 							<li class="tabs-title is-active"><i class="fi-plus icon" id="food-rec-icon0" data-state="plus"></i><a href="#food-rec-panel0" id="food-rec-name0" aria-selected="true">Rec 1 Name</a></li>
 							<li class="tabs-title"><i class="fi-plus icon" id="food-rec-icon1" data-state="plus"></i><a href="#food-rec-panel1" id="food-rec-name1">Rec 2 Name</a></li>
 							<li class="tabs-title"><i class="fi-plus icon" id="food-rec-icon2" data-state="plus"></i><a href="#food-rec-panel2" id="food-rec-name2">Rec 3 Name</a></li>
@@ -127,7 +135,7 @@
 						</ul>
 					</div>
 					<div class="medium-8 cell">
-						<div class="tabs-content" data-tabs-content="example-tabs">
+						<div class="tabs-content page-font" data-tabs-content="example-tabs">
 							<div class="tabs-panel is-active" id="food-rec-panel0">
 								<img src="assets/images/ATXperience.png" width="200px" height="200px" id="food-rec-image0">
 								<div id="food-rec-rating0">Rec 1: Rating</div>
@@ -187,7 +195,7 @@
 				<h2 class="text-center rec-header">AFTER PARTY</h2>
 				<div class="grid-x collapse">
 					<div class="medium-4 cell">
-						<ul class="vertical tabs" data-active-collapse="true" data-tabs id="example-tabs">
+						<ul class="vertical tabs rec-list page-font" data-active-collapse="true" data-tabs id="example-tabs">
 							<li class="tabs-title is-active"><i class="fi-plus icon" data-state="plus" id="post-rec-icon1"></i><a href="post-rec-panel0" id="post-rec-name0" aria-selected="true">Rec 1 Name</a></li>
 							<li class="tabs-title"><i class="fi-plus icon" data-state="plus" id="post-rec-icon1"></i><a href="#post-rec-panel1" id="post-rec-name1">Rec 2 Name</a></li>
 							<li class="tabs-title"><i class="fi-plus icon" data-state="plus" id="post-rec-icon2"></i><a href="#post-rec-panel2" id="post-rec-name2">Rec 3 Name</a></li>
@@ -197,7 +205,7 @@
 						</ul>
 					</div>
 					<div class="medium-8 cell">
-						<div class="tabs-content" data-tabs-content="example-tabs">
+						<div class="tabs-content page-font" data-tabs-content="example-tabs">
 							<div class="tabs-panel is-active" id="post-rec-panel0">
 								<img src="assets/images/ATXperience.png" width="200px" height="200px" id="post-rec-image0">
 								<div id="post-rec-rating0">Rec 1: Rating</div>
