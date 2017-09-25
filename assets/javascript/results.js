@@ -37,115 +37,143 @@ $(document).ready(function(){
 		var oArgs = {
 			app_key:"sxjH4rQHGzt7d3v4",
 			keywords: ((keywords === "undefined") ? "" : keywords),
-			page_size:'50',
-		 
 			where: 'austin',
+			page_size:'30',
 			sort_order:'popularity',
-
 		};
 		EVDB.API.call("/events/search", oArgs, function(oData) {
 	      // Note: this relies on the custom toString() methods below
-      
+	      console.log(oData);
 	      var eventArray = oData.events.event;
-				var mapMarkers = [];
+	      var mapMarkers = [];
         //sorting the event array by ascending date
-	     	eventArray.sort(function(a,b){
-       		   return new Date(a.start_time).getTime() - new Date(b.start_time).getTime() 
+        eventArray.sort(function(a,b){
+        	return new Date(a.start_time).getTime() - new Date(b.start_time).getTime() 
         });
-	
+        
         console.log(eventArray);
 
-	      for (var i=0 ; i < eventArray.length;  i++) {
+        for (var i=0 ; i < eventArray.length;  i++) {
+        	
+        	if (eventArray[i].image === null) {
+        		var thumbnailUrl = './assets/images/ATXperience.png';
+        	} else {
+        		var thumbnailUrl = eventArray[i].image.medium.url;
+        	};
 
-		      if (eventArray[i].image === null) {
-		      	var thumbnailUrl = './assets/images/ATXperience.png';
-		      } else {
-		      	var thumbnailUrl = eventArray[i].image.medium.url;
-		      };
+        	if (eventArray[i].description === null || eventArray[i].description === "null" || eventArray[i].description === "" || eventArray[i].description === " ") {
+        		continue;
+        	};
 
-					if (eventArray[i].description === null || eventArray[i].description === "null" || eventArray[i].description === "" || eventArray[i].description === " ") {
-						continue;
-					};
+        	var marker  = {
+        		lng: eventArray[i].longitude,
+        		lat: eventArray[i].latitude,
+        		title: eventArray[i].title,
+        		id: eventArray[i].id,
+        	}
 
-					var marker  = {
-						lng: eventArray[i].longitude,
-						lat: eventArray[i].latitude,
-						title: eventArray[i].title,
-						id: eventArray[i].id,
+        	mapMarkers.push(marker);
+
+
+        	var eventCard = $('<div>');
+        	eventCard.addClass('media-object event-results');
+
+        	var imgSection = $('<div>');
+        	imgSection.addClass('media-object-section');
+
+        	var eventImg = $('<img>');
+        	eventImg.addClass('thumbnail event-img');
+        	eventImg.attr('src',thumbnailUrl);
+        	eventImg.data('eventID', eventArray[i].id);
+
+        	var detailSection = $('<div>');
+        	detailSection.addClass('media-object-section');
+
+        	var eventTitleLink = $('<a>');
+        	eventTitleLink.data('eventID', eventArray[i].id);
+        	eventTitleLink.addClass('event-title');
+
+        	var eventTitle=$('<h4>');
+        	eventTitle.html(eventArray[i].title);
+
+        	//set the venue details
+        	var momentStartDate=moment(eventArray[i].start_time).format('dddd, MMMM Do YYYY,h:mm A');
+
+        	var zip= eventArray[i].postal_code;
+        	if(zip===null || zip==='null'){
+        		zip='';
+        	}else{
+        		zip=' - '+ eventArray[i].postal_code;
+        	}
+
+        	var venue=$('<p>');
+        	venue.html('<i> <b>Starts on:</b> '+momentStartDate+'<br><b>Venue name: </b>'+eventArray[i].venue_name+'<br><b>Location:</b> '+eventArray[i].venue_address+', '+
+        		eventArray[i].city_name+'  '+eventArray[i].region_abbr+' '+zip+'</i>');
+
+        	var eventDescription=$('<p>');
+        	eventDescription.html(eventArray[i].description);
+
+        	eventDescription.shorten({
+        		"showChars" : 50,
+        		"moreText"	: "<br>Read more...",
+        		"lessText"	: "<br>Read less",
+        	});
+
+        	
+
+        	imgSection.append(eventImg);
+        	eventTitleLink.append(eventTitle);
+        	detailSection.append(eventTitleLink);
+        	detailSection.append(venue);
+        	detailSection.append(eventDescription);
+        	eventCard.append(imgSection);
+        	eventCard.append(detailSection);
+        	$('#eventList').append(eventCard);
+
+        };
+
+	// Google Maps
+	function myMap() {
+		var mapProp = {
+			center:new google.maps.LatLng(30.2672,-97.7431),
+			zoom: 8,
+		};
+
+		var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+		var infowindow = new google.maps.InfoWindow({
+					content:{
+						'title':'marker.title',
 					}
 
-					mapMarkers.push(marker);
+				});
+		for (var i = 0; i < mapMarkers.length; i++) {
 
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(mapMarkers[i].lat,mapMarkers[i].lng),
+				map: map,
+				title: mapMarkers[i].title,
+				url: 'event.html?q=' + mapMarkers[i].id,
+				animation:google.maps.Animation.bounce,
+			});
+			
 
-		      var eventCard = $('<div>');
-		      eventCard.addClass('media-object event-results');
-		      var imgSection = $('<div>');
-		      imgSection.addClass('media-object-section');
-		      var eventImg = $('<img>');
-		      eventImg.addClass('thumbnail event-img');
-		      eventImg.attr('src',thumbnailUrl);
-					eventImg.data('eventID', eventArray[i].id);
-		      var detailSection = $('<div>');
-		      detailSection.addClass('media-object-section');
-					var eventTitleLink = $('<a>');
-					eventTitleLink.data('eventID', eventArray[i].id);
-					eventTitleLink.addClass('event-title');
-		      var eventTitle=$('<h4>');
-		      eventTitle.html(eventArray[i].title);
-          var venue=$('<p>');
-        	venue.html('<i> <b>Starts on:</b> '+eventArray[i].start_time+'<br><b>Venue name: </b>'+eventArray[i].venue_name+'<br><b>Location:</b> '+eventArray[i].venue_address+', '+
-        		eventArray[i].city_name+'  '+eventArray[i].region_abbr+' - '+eventArray[i].postal_code+'</i>');
-		      var eventDescription=$('<p>');
-		      eventDescription.html(eventArray[i].description);
-          
-		      eventDescription.shorten(({
-		      		"showChars" : 150,
-		      		"moreText"	: "<br>See More...",
-		      		"lessText"	: "<br>Less...",
-		      	}));
-		      imgSection.append(eventImg);
-					eventTitleLink.append(eventTitle);
-		      detailSection.append(eventTitleLink);
-        	detailSection.append(venue);
-		      detailSection.append(eventDescription);
-		      eventCard.append(imgSection);
-		      eventCard.append(detailSection);
-		      $('#eventList').append(eventCard);
+			google.maps.event.addDomListener(marker, 'click', function() {
+				window.location.href = this.url;
+			});
 
-				};
+		};
 
-					// Google Maps
-					function myMap() {
-						var mapProp = {
-								center:new google.maps.LatLng(30.2672,-97.7431),
-								zoom: 10,
-						};
+	};
 
-						var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+	myMap();
 
-						for (var i = 0; i < mapMarkers.length; i++) {
+	
 
-							var marker = new google.maps.Marker({
-								position: new google.maps.LatLng(mapMarkers[i].lat,mapMarkers[i].lng),
-								map: map,
-								title: mapMarkers[i].title,
-								url: 'event.html?q=' + mapMarkers[i].id,
-								animation:google.maps.Animation.DROP,
-							});
+});
+}
+show_alert();
 
-							google.maps.event.addDomListener(marker, 'click', function() {
-			            window.location.href = this.url;
-			        });
-
-						};
-
-					};
-
-					myMap();
-
-	  });
-	}
-	show_alert();
 
 })
 
