@@ -6,6 +6,47 @@ $(document).ready(function(){
 		app_key:"sxjH4rQHGzt7d3v4",
 		id:eventfulID
 	};
+
+	$(".icon").on("click", function(event) {
+
+		console.log("click worked");
+		console.log($(this).data("icon-id"));
+		console.log($(this).data("state"));
+		console.log($(this));
+
+		// if data-state equals plus-sign, remove class fa-plus, add class fa-check, change data-state to check, run addToItinerary function
+		if ($(this).data("state") === "plus") {
+			$(this).removeClass("fi-plus");
+			$(this).addClass("fi-check");
+			$(this).data("state", "check");
+			addToItinerary($(this).data("icon-id"));
+		} else if ($(this).data("state") === "check") {
+			$(this).removeClass("fi-check");
+			$(this).addClass("fi-plus");
+			$(this).data("state", "plus");
+		} else if ($(this).data("state") === "minus") {
+			console.log("minus click worked!");
+		}
+		
+	})
+
+
+	function addToItinerary(item) {
+
+		var newItem = $("<div>").text("  " + item);
+		var removeIcon = $("<i>").addClass("fi-minus minusIcon").data("state", "minus");
+		newItem.prepend(removeIcon);
+		$("#itineraryModal").append(newItem);
+
+	}
+
+	function removeFromItinerary(item) {
+
+		console.log(item);
+
+	}
+
+
 	//send the eventful api the id
 	EVDB.API.call("/events/get", oArgs, function(oData) {
 		//populate the event page
@@ -36,8 +77,9 @@ $(document).ready(function(){
 				$("#food-rec-rating"+i).text((eateries[i].restaurant.user_rating.aggregate_rating)+"/5.0");
 				$("#food-rec-URL"+i).attr("href", eateries[i].restaurant.url);
 				$("#food-rec-category"+i).text(eateries[i].restaurant.cuisines);
-				$("#food-rec-cost"+i).text("Cost for two is: "+eateries[i].restaurant.average_cost_for_two);
+				$("#food-rec-cost"+i).text("Cost for Two: $"+eateries[i].restaurant.average_cost_for_two);
 				$("#food-rec-location"+i).text(eateries[i].restaurant.location.address);
+				$("#food-rec-icon"+i).data("icon-id", eateries[i].restaurant.name);
 			}
 
 		});
