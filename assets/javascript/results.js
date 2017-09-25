@@ -37,16 +37,23 @@ $(document).ready(function(){
 		var oArgs = {
 			app_key:"sxjH4rQHGzt7d3v4",
 			keywords: ((keywords === "undefined") ? "" : keywords),
-			page_size: 25,
-			where: "Austin"
+			page_size:'50',
+		 
+			where: 'austin',
+			sort_order:'popularity',
 
 		};
 		EVDB.API.call("/events/search", oArgs, function(oData) {
 	      // Note: this relies on the custom toString() methods below
-
+      
 	      var eventArray = oData.events.event;
 				var mapMarkers = [];
-	      console.log(eventArray);
+        //sorting the event array by ascending date
+	     	eventArray.sort(function(a,b){
+       		   return new Date(a.start_time).getTime() - new Date(b.start_time).getTime() 
+        });
+	
+        console.log(eventArray);
 
 	      for (var i=0 ; i < eventArray.length;  i++) {
 
@@ -85,8 +92,12 @@ $(document).ready(function(){
 					eventTitleLink.addClass('event-title');
 		      var eventTitle=$('<h4>');
 		      eventTitle.html(eventArray[i].title);
+          var venue=$('<p>');
+        	venue.html('<i> <b>Starts on:</b> '+eventArray[i].start_time+'<br><b>Venue name: </b>'+eventArray[i].venue_name+'<br><b>Location:</b> '+eventArray[i].venue_address+', '+
+        		eventArray[i].city_name+'  '+eventArray[i].region_abbr+' - '+eventArray[i].postal_code+'</i>');
 		      var eventDescription=$('<p>');
 		      eventDescription.html(eventArray[i].description);
+          
 		      eventDescription.shorten(({
 		      		"showChars" : 150,
 		      		"moreText"	: "<br>See More...",
@@ -95,6 +106,7 @@ $(document).ready(function(){
 		      imgSection.append(eventImg);
 					eventTitleLink.append(eventTitle);
 		      detailSection.append(eventTitleLink);
+        	detailSection.append(venue);
 		      detailSection.append(eventDescription);
 		      eventCard.append(imgSection);
 		      eventCard.append(detailSection);
@@ -132,8 +144,6 @@ $(document).ready(function(){
 					myMap();
 
 	  });
-
-
 	}
 	show_alert();
 
