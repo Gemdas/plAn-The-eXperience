@@ -24,25 +24,24 @@ $(document).ready(function(){
 			$(this).removeClass("fi-check");
 			$(this).addClass("fi-plus");
 			$(this).data("state", "plus");
-		} else if ($(this).data("state") === "minus") {
-			console.log("minus click worked!");
 		}
-		
+
+		$(".remove").on("click", function(event) {
+			$(this).closest("tr").remove();
+		})
 	})
 
 
 	function addToItinerary(item) {
-
-		var newItem = $("<div>").text("  " + item);
-		var removeIcon = $("<i>").addClass("fi-minus minusIcon").data("state", "minus");
-		newItem.prepend(removeIcon);
-		$("#itineraryModal").append(newItem);
-
-	}
-
-	function removeFromItinerary(item) {
-
-		console.log(item);
+		
+		var createRow = $("<tr>")
+		var removeBtn = $("<button>").addClass("remove").attr("data-id", item).text("X");
+		var removeIcon = $("<td>").attr("data-id", item).append(removeBtn);
+		var newItem = $("<td>").attr("data-id", item).text(item);
+		var newInputBox = $("<input>").attr("type", "time");
+		var newTime = $("<td>").attr("data-id", item).append(newInputBox);
+		var newRow = createRow.append(removeIcon).append(newItem).append(newTime);
+		$("#itineraryTable").append(newRow);
 
 	}
 

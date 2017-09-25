@@ -90,11 +90,6 @@
     font-size: 48px;
 }
 
-.rec-panel {
-	width: 100%;
-	margin: 2px;
-}
-
 .recommendations {
 	width: 100%;
 	margin: auto;
@@ -115,13 +110,18 @@
 li i {
 	display: inline-block;
 	position: absolute;
-	top: 15px;
+	top: 20px;
 	left: 5px;
 }
 
-li {
+.rec-list li {
 	display: inline-block;
 	position: relative;
+	font-family: 'Slabo 27px', serif;
+}
+
+.list li {
+	margin: 5px;
 }
 
 /* add style to go to stop button */
@@ -143,3 +143,20 @@ li {
 #goUpBtn:hover {
   background-color: #555;
 }
+
+.remove:hover {
+	color: red;
+}
+
+.event-info, .page-font {
+	font-family: 'Slabo 27px', serif;
+}
+
+.page-font a {
+	font-size: 16px;
+}
+
+.itinerary {
+	font-size: 24px;
+}
+
