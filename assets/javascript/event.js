@@ -21,6 +21,7 @@ $(document).ready(function(){
 			$(this).removeClass("fi-check");
 			$(this).addClass("fi-plus");
 			$(this).data("state", "plus");
+
 			removeFromItinerary($(this).data("icon-id"));
 		} 
 
@@ -39,6 +40,7 @@ $(document).ready(function(){
 			$(this).data("state", "plus");
 			removeFromItinerary($(this).data("icon-id"));
 		} 
+
 	})
 
 
@@ -115,6 +117,26 @@ $(document).ready(function(){
 		});
 
 
+		$.ajax({
+			method: "GET",
+			url:"https://developers.zomato.com/api/v2.1/search?apikey=d05924ed72ee85e73cf712157d5cd73c&count=6&q=Clubs&lat="+lat+"&lon="+long+"&cuisines=drinks&sort=rating&order=desc",
+			
+		}).done(function(results){
+			console.log(results);
+			var bars=results.restaurants;
+			for (var i =0; i < bars.length ; i++) {
+				$("#post-rec-name"+i).text(bars[i].restaurant.name);
+				$("#post-rec-image"+i).attr("src", bars[i].restaurant.featured_image);
+				$("#post-rec-rating"+i).text((bars[i].restaurant.user_rating.aggregate_rating)+"/5.0");
+				$("#post-rec-URL"+i).attr("href", bars[i].restaurant.url);
+				$("#post-rec-category"+i).text(bars[i].restaurant.cuisines);
+				$("#post-rec-cost"+i).text("Cost for Two: $"+bars[i].restaurant.average_cost_for_two);
+				$("#post-rec-location"+i).text(bars[i].restaurant.location.address);
+				$("#post-rec-icon"+i).data("icon-id", bars[i].restaurant.name);
+      }
+    });
+
+
 		var newArgs = {
 			app_key:"sxjH4rQHGzt7d3v4",
 			where: 'austin',
@@ -138,6 +160,7 @@ $(document).ready(function(){
 				$("#pre-rec-URL"+i).attr("href", "./event.html?q=" + eventArray[i].id);
 				$("#pre-rec-location"+i).text(eventArray[i].venue_address);
 				$("#pre-rec-icon"+i).data("icon-id", eventArray[i].title);
+
 
 			}
 
