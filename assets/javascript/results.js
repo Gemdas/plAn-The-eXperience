@@ -44,6 +44,14 @@ $(document).ready(function(){
 		EVDB.API.call("/events/search", oArgs, function(oData) {
 	      // Note: this relies on the custom toString() methods below
 	      console.log(oData);
+	      if (oData.events===null)
+	      {
+	      	var alert=$("<div>");
+	      	$(alert).addClass("alert callout");
+	      	$(alert).html("<p>We're sorry but the keywords you have searched do not have any results. Please try new keywords</p>")
+	      	$(alert).prependTo("#googleMap");
+	      	return;
+	      }
 	      var eventArray = oData.events.event;
 	      var mapMarkers = [];
         //sorting the event array by ascending date
