@@ -133,8 +133,8 @@ $(document).ready(function(){
 				$("#post-rec-cost"+i).text("Cost for Two: $"+bars[i].restaurant.average_cost_for_two);
 				$("#post-rec-location"+i).text(bars[i].restaurant.location.address);
 				$("#post-rec-icon"+i).data("icon-id", bars[i].restaurant.name);
-      }
-    });
+     		 }
+   		 });
 
 
 		var newArgs = {
