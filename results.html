@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Plan The Experience</title>
+	<title>ATXperience</title>
 
 	<!-- Compressed CSS -->
 
@@ -12,19 +12,31 @@
 </head>
 <body>
 
-	<!-- Navbar -->
-	<div class="wrapper">
-		<div class="top-bar navigation" id="example-menu">
-			<div class="top-bar-left">
-				<ul class="dropdown menu navigation">
-					<li class="menu-text"><a href="index.html">ATXperience</a></li>
-				</ul>
-			</div>
+<!-- Navbar -->
+<div class="wrapper">
+	<div class="top-bar navigation" id="example-menu">
+		<div class="top-bar-left">
+			<ul class="menu navigation">
+				<li class="menu-text"><a href="index.html">ATXperience</a></li>
+			</ul>
 		</div>
-		<div id="map"></div>
+		<div class="top-bar-right">
+			<button class="button" data-open="itineraryModal">Itinerary</button>
+		</div>
+	</div>
+
+	<div class="small reveal page-font itinerary" id="itineraryModal" data-reveal>
+		<table class="hover" id="itineraryTable">
+			<thead>
+				<th>To Do</th>
+				<th>Time</th>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
 
 		<!-- Keyword input box -->
-		<form>
+		<form id="search-bar">
 			<div class="row">
 				<div class="small-12 medium-12 columns">
 					<p class="input-header">Search Events</p>

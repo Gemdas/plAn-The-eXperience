@@ -37,8 +37,12 @@ $(document).ready(function(){
 	// Click function for Search
 	$("#searchBtn").on("click", function(event) {
 		event.preventDefault();
-		console.log("search click worked!");
+		console.log(encodeURI(" "));
 		var searchInput = $("#searchInput").val().trim();
+		if (searchInput==='')
+		{
+			return;
+		}
 		console.log(encodeURI(searchInput));
 		location.assign("results.html?q="+encodeURI(searchInput));
 		$("form input").val("");

@@ -14,12 +14,24 @@
 <div class="wrapper">
 	<div class="top-bar navigation" id="example-menu">
 		<div class="top-bar-left">
-			<ul class="dropdown menu navigation">
+			<ul class="menu navigation">
 				<li class="menu-text"><a href="index.html">ATXperience</a></li>
 			</ul>
 		</div>
+		<div class="top-bar-right">
+			<button class="button" data-open="itineraryModal">Itinerary</button>
+		</div>
 	</div>
-	<div id="map"></div>
+
+	<div class="small reveal page-font itinerary" id="itineraryModal" data-reveal>
+		<table class="hover" id="itineraryTable">
+			<thead>
+				<th>To Do</th>
+				<th>Time</th>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
 
 	<div class="grid-x search-div">
 		<div class="medium-12 cell">
@@ -43,7 +55,7 @@
 						<img class="thumbnail" src="assets/images/music.jpg"></a>
 					</div>
 					<div class="back" data-topic="music">
-						<h3 class="back-text">Eccletic taste? We got your back!</h3>
+						<h3 class="back-text">Live Music Capital</h3>
 					</div>
 				</div>
 			</div>
@@ -86,7 +98,7 @@
 						<img class="thumbnail" src="assets/images/family.jpg">
 					</div>
 					<div class="back" data-topic="family">
-						<h3 class="back-text">Fun For The Whole Fam!</h3>
+						<h3 class="back-text">Fun For The Fam!</h3>
 					</div>
 				</div>
 			</div>
