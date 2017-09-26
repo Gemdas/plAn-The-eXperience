@@ -14,12 +14,24 @@
 <div class="wrapper">
 	<div class="top-bar navigation" id="example-menu">
 		<div class="top-bar-left">
-			<ul class="dropdown menu navigation">
+			<ul class="menu navigation">
 				<li class="menu-text"><a href="index.html">ATXperience</a></li>
 			</ul>
 		</div>
+		<div class="top-bar-right">
+			<button class="button" data-open="itineraryModal">Itinerary</button>
+		</div>
 	</div>
-	<div id="map"></div>
+
+	<div class="small reveal page-font itinerary" id="itineraryModal" data-reveal>
+		<table class="hover" id="itineraryTable">
+			<thead>
+				<th>To Do</th>
+				<th>Time</th>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
 
 	<div class="grid-x search-div">
 		<div class="medium-12 cell">
