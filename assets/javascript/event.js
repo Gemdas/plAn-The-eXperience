@@ -114,6 +114,27 @@ $(document).ready(function(){
 
 		});
 
+		$.ajax({
+			method: "GET",
+			url:"https://developers.zomato.com/api/v2.1/search?apikey=d05924ed72ee85e73cf712157d5cd73c&count=6&q=pubs&bars&cuisines=drinks&lat="+lat+"&lon="+long+"&sort=rating&order=desc",
+		}).done(function(results){
+			console.log(results);
+			var clubs=results.restaurants; 
+			//populate the eats catagory
+			for (var i = 0; i < clubs.length; i++) {
+				recArray.push(clubs[i].restaurant.name);
+				$("#post-rec-name"+i).text(clubs[i].restaurant.name);
+				$("#post-rec-image"+i).attr("src", clubs[i].restaurant.featured_image).attr("target", "_blank");
+				$("#post-rec-rating"+i).text((clubs[i].restaurant.user_rating.aggregate_rating)+"/5.0");
+				$("#post-rec-URL"+i).attr("href", clubs[i].restaurant.url);
+				$("#post-rec-category"+i).text(clubs[i].restaurant.cuisines);
+				$("#post-rec-cost"+i).text("Cost for Two: $"+clubs[i].restaurant.average_cost_for_two);
+				$("#post-rec-location"+i).text(clubs[i].restaurant.location.address);
+				$("#post-rec-icon"+i).data("icon-id", clubs[i].restaurant.name);
+			}
+
+		});
+
 
 		var newArgs = {
 			app_key:"sxjH4rQHGzt7d3v4",
