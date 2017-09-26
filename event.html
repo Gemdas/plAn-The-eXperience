@@ -2,21 +2,22 @@
 <html>
 <head>
 	<title id="page-title">Event Info</title>
+	<link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
 	<link rel="stylesheet" href="foundation/css/foundation.css">
     <link rel="stylesheet" href="foundation/css/app.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" href="foundation/css/foundation-icons/foundation-icons.css" />
 	<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
 </head>
 <body>
 
 <div class="wrapper">
-	<div class="top-bar navigation">>
+	<div class="top-bar navigation" id="example-menu">
 		<div class="top-bar-left">
-			<ul class="dropdown menu navigation">
+			<ul class="menu navigation">
 				<li class="menu-text"><a href="index.html">ATXperience</a></li>
 			</ul>
 		</div>
-
 		<div class="top-bar-right">
 			<button class="button" data-open="itineraryModal">Itinerary</button>
 		</div>
@@ -43,12 +44,10 @@
 					<li id="event-address" class="event-info"></li>
 					<li id="event-description" class="event-info"></li>
 					<li><a href="#" id="event-URL" class="event-info"></a></li>
-
 				</ul>
 			</div>
 		</div>
 	</div>
-
 
 	<div class="grid-x recommendations">
 		<div class="cell" id="pre-recs">
@@ -249,7 +248,6 @@
 					</div>
 					<div class="small-0 medium-2 cell"></div>
 				</div>
-
 		</div>
 	</div>
 </div>
@@ -275,7 +273,23 @@
 	</script>
 
 
-<script src="assets/javascript/index.js.js" type="text/javascript" charset="utf-8" async defer></script>
-	
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Moment.js -->
+<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+<!-- Eventful API -->
+<script type="text/javascript" src="http://api.eventful.com/js/api"></script>
+
+<!-- Event.js -->
+<script src="assets/javascript/event.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Foundation JS -->
+<script src="foundation/js/vendor/jquery.js"></script>
+<script src="foundation/js/vendor/what-input.js"></script>
+<script src="foundation/js/vendor/foundation.js"></script>
+<script src="foundation/js/app.js"></script>
+
 </body>
 </html>
