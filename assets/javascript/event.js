@@ -24,11 +24,21 @@ $(document).ready(function(){
 			removeFromItinerary($(this).data("icon-id"));
 		} 
 
-		/* $(".remove").on("click", function(event) {
-			var itemName = ($(this).data("id"));
-			$(this).closest("tr").remove();
-		}) */
+	})
 
+	$("#add-event").on("click", function(event) {
+
+		if ($(this).data("state") === "plus") {
+			$(this).removeClass("fi-plus");
+			$(this).addClass("fi-check success");
+			$(this).data("state", "check");
+			addToItinerary($(this).data("icon-id"));
+		} else if ($(this).data("state") === "check") {
+			$(this).removeClass("fi-check success");
+			$(this).addClass("fi-plus primary");
+			$(this).data("state", "plus");
+			removeFromItinerary($(this).data("icon-id"));
+		} 
 	})
 
 
@@ -74,6 +84,7 @@ $(document).ready(function(){
 		$("#event-address").text(oData.address);
 		$("#event-URL").attr("href", oData.url);
 		$("#event-description").html(oData.description);
+		$("#add-event").data("icon-id", oData.title);
 		//get the longituide & lattitude
 		var lat=oData.latitude;
 		var long=oData.longitude;
