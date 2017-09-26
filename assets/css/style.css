@@ -82,6 +82,7 @@
 	text-align: center;
     font-family: 'Amatic SC', cursive;
     font-size: 60px;
+    padding-top: 60px;
 }
 
 .rec-header {
@@ -153,7 +154,7 @@ li i {
 }
 
 .page-font a {
-	font-size: 16px;
+	font-size: 24px;
 }
 
 .itinerary {
