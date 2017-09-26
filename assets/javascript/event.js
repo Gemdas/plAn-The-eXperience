@@ -88,10 +88,10 @@ $(document).ready(function(){
 		//call the zomato api
 		$.ajax({
 			method: "GET",
-			url:"https://developers.zomato.com/api/v2.1/search?apikey=d05924ed72ee85e73cf712157d5cd73c&count=6&lat="+lat+"&lon="+long+"&radius=8046.72&sort=rating",
+			url:"https://developers.zomato.com/api/v2.1/search?apikey=d05924ed72ee85e73cf712157d5cd73c&count=6&lat="+lat+"&lon="+long+"&radius=1609.34&sort=rating",
 		}).done(function(results){
 			console.log(results);
-			var eateries=results.restaurants;
+			var eateries=results.restaurants; 
 			//populate the eats catagory
 			for (var i = 0; i < eateries.length; i++) {
 				recArray.push(eateries[i].restaurant.name);
