@@ -57,10 +57,6 @@ $(document).ready(function(){
 
 		$('#itineraryTable tr[data-id="' + item + '"]').remove();
 
-		// find itinerary item with data attribute of item and remove it from table
-
-		console.log("remove function working");
-
 
 	}
 
@@ -96,7 +92,7 @@ $(document).ready(function(){
 			for (var i = 0; i < eateries.length; i++) {
 				recArray.push(eateries[i].restaurant.name);
 				$("#food-rec-name"+i).text(eateries[i].restaurant.name);
-				$("#food-rec-image"+i).attr("src", eateries[i].restaurant.featured_image);
+				$("#food-rec-image"+i).attr("src", eateries[i].restaurant.featured_image).attr("target", "_blank");
 				$("#food-rec-rating"+i).text((eateries[i].restaurant.user_rating.aggregate_rating)+"/5.0");
 				$("#food-rec-URL"+i).attr("href", eateries[i].restaurant.url);
 				$("#food-rec-category"+i).text(eateries[i].restaurant.cuisines);
@@ -128,11 +124,10 @@ $(document).ready(function(){
 
 				$("#pre-rec-name"+i).text(eventArray[i].title);
 				$("#pre-rec-image"+i).attr("src", thumbnailUrl);
-				$("#pre-rec-rating"+i).text(eventArray[i].title);
 				$("#pre-rec-URL"+i).attr("href", "./event.html?q=" + eventArray[i].id);
-				$("#pre-rec-category"+i).text("");
-				$("#pre-rec-cost"+i).text("");
 				$("#pre-rec-location"+i).text(eventArray[i].venue_address);
+				$("#pre-rec-icon"+i).data("icon-id", eventArray[i].title);
+
 			}
 
 		});
