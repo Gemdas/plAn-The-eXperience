@@ -7,14 +7,11 @@ $(document).ready(function(){
 		id:eventfulID
 	};
 
+	var itineraryArray = [];
+	var recArray = [];
+
 	$(".icon").on("click", function(event) {
 
-		console.log("click worked");
-		console.log($(this).data("icon-id"));
-		console.log($(this).data("state"));
-		console.log($(this));
-
-		// if data-state equals plus-sign, remove class fa-plus, add class fa-check, change data-state to check, run addToItinerary function
 		if ($(this).data("state") === "plus") {
 			$(this).removeClass("fi-plus");
 			$(this).addClass("fi-check");
@@ -24,24 +21,46 @@ $(document).ready(function(){
 			$(this).removeClass("fi-check");
 			$(this).addClass("fi-plus");
 			$(this).data("state", "plus");
-		}
+			removeFromItinerary($(this).data("icon-id"));
+		} 
 
-		$(".remove").on("click", function(event) {
+		/* $(".remove").on("click", function(event) {
+			var itemName = ($(this).data("id"));
 			$(this).closest("tr").remove();
-		})
+		}) */
+
 	})
 
 
 	function addToItinerary(item) {
 
-		var createRow = $("<tr>")
-		var removeBtn = $("<button>").addClass("remove").attr("data-id", item).text("X");
-		var removeIcon = $("<td>").attr("data-id", item).append(removeBtn);
-		var newItem = $("<td>").attr("data-id", item).text(item);
-		var newInputBox = $("<input>").attr("type", "time");
-		var newTime = $("<td>").attr("data-id", item).append(newInputBox);
-		var newRow = createRow.append(removeIcon).append(newItem).append(newTime);
-		$("#itineraryTable").append(newRow);
+		
+		if (itineraryArray.indexOf(item) > -1) {
+			console.log("already added");
+		} else {
+			itineraryArray.push(item);
+			var createRow = $("<tr>")
+			var newItem = $("<td>").attr("data-id", item).text(item);
+			var newInputBox = $("<input>").attr("type", "time");
+			var newTime = $("<td>").attr("data-id", item).append(newInputBox);
+			var newRow = createRow.append(newItem).append(newTime).attr("data-id", item);
+			$("#itineraryTable").append(newRow);
+		}
+
+	}
+
+	function removeFromItinerary(item) {
+
+		var itemIndex = itineraryArray.indexOf(item);
+		itineraryArray.splice(itemIndex, 1);
+		console.log(itineraryArray);
+
+		$('#itineraryTable tr[data-id="' + item + '"]').remove();
+
+		// find itinerary item with data attribute of item and remove it from table
+
+		console.log("remove function working");
+
 
 	}
 
@@ -75,6 +94,7 @@ $(document).ready(function(){
 			var eateries=results.restaurants;
 			//populate the eats catagory
 			for (var i = 0; i < eateries.length; i++) {
+				recArray.push(eateries[i].restaurant.name);
 				$("#food-rec-name"+i).text(eateries[i].restaurant.name);
 				$("#food-rec-image"+i).attr("src", eateries[i].restaurant.featured_image);
 				$("#food-rec-rating"+i).text((eateries[i].restaurant.user_rating.aggregate_rating)+"/5.0");
