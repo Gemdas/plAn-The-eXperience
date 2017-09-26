@@ -171,3 +171,11 @@ li i {
 .missing-img {
 	opacity: .5;
 }
+
+#add-event {
+	margin-left: 25px;
+}
+
+.addBtn {
+	padding: 5px;
+}
