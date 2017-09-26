@@ -33,7 +33,7 @@ $(document).ready(function(){
 
 
 	function addToItinerary(item) {
-		
+
 		var createRow = $("<tr>")
 		var removeBtn = $("<button>").addClass("remove").attr("data-id", item).text("X");
 		var removeIcon = $("<td>").attr("data-id", item).append(removeBtn);
@@ -51,6 +51,8 @@ $(document).ready(function(){
 		//populate the event page
 		var eventTime = oData.start_time;
 		var formattedDate = moment(eventTime).format("MMMM Do YYYY, h:mm a");
+		var formattedDateForSearch = moment(eventTime).format("YYYYMMDD00");
+
 		$("#event-title").text(oData.title);
 		$("#event-date").text(formattedDate);
 		$("#event-venue").text(oData.venue_name);
@@ -62,6 +64,8 @@ $(document).ready(function(){
 		var long=oData.longitude;
 		console.log(lat);
 		console.log(long);
+
+
 		//call the zomato api
 		$.ajax({
 			method: "GET",
@@ -83,10 +87,39 @@ $(document).ready(function(){
 
 		});
 
+
+		var newArgs = {
+			app_key:"sxjH4rQHGzt7d3v4",
+			where: 'austin',
+			date: formattedDateForSearch + "-" + formattedDateForSearch,
+			page_size:'6',
+		};
+
+		EVDB.API.call("/events/search", newArgs, function(newData) {
+			var eventArray = newData.events.event;
+			console.log(eventArray);
+			for (var i = 0; i < eventArray.length; i++) {
+
+				if (eventArray[i].image === null) {
+					var thumbnailUrl = './assets/images/ATXperience.png';
+				} else {
+					var thumbnailUrl = eventArray[i].image.medium.url;
+				};
+
+				$("#pre-rec-name"+i).text(eventArray[i].title);
+				$("#pre-rec-image"+i).attr("src", thumbnailUrl);
+				$("#pre-rec-rating"+i).text(eventArray[i].title);
+				$("#pre-rec-URL"+i).attr("href", "./event.html?q=" + eventArray[i].id);
+				$("#pre-rec-category"+i).text("");
+				$("#pre-rec-cost"+i).text("");
+				$("#pre-rec-location"+i).text(eventArray[i].venue_address);
+			}
+
+		});
+
+
+
 	});
-	 
-	
-	
-	
-	
+
+
 });
