@@ -94,7 +94,7 @@ $(document).ready(function(){
 		//call the zomato api
 		$.ajax({
 			method: "GET",
-			url:"https://developers.zomato.com/api/v2.1/search?apikey=d05924ed72ee85e73cf712157d5cd73c&count=6&lat="+lat+"&lon="+long+"&radius=1609.34&sort=rating",
+			url:"https://developers.zomato.com/api/v2.1/search?apikey=d05924ed72ee85e73cf712157d5cd73c&count=6&lat="+lat+"&lon="+long+"&sort=rating",
 		}).done(function(results){
 			console.log(results);
 			var eateries=results.restaurants; 
