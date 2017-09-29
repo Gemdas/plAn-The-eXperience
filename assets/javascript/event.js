@@ -13,13 +13,13 @@ $(document).ready(function(){
 	$(".icon").on("click", function(event) {
 
 		if ($(this).data("state") === "plus") {
-			$(this).removeClass("fi-plus");
+			$(this).removeClass("fi-plus plus-icon");
 			$(this).addClass("fi-check check-icon");
 			$(this).data("state", "check");
 			addToItinerary($(this).data("icon-id"));
 		} else if ($(this).data("state") === "check") {
 			$(this).removeClass("fi-check check-icon");
-			$(this).addClass("fi-plus");
+			$(this).addClass("fi-plus plus-icon");
 			$(this).data("state", "plus");
 			removeFromItinerary($(this).data("icon-id"));
 		} 

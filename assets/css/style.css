@@ -187,6 +187,7 @@ li i {
 
 .addBtn {
 	padding: 5px;
+	color: #ffffff !important;
 }
 
 .successBtn {
@@ -194,7 +195,11 @@ li i {
 }
 
 .check-icon {
-	color: #006400;
+	color: #19373D;
+}
+
+.plus-icon {
+	color: #416268;
 }
 
 .pre-panel {
@@ -213,11 +218,16 @@ li i {
 }
 
 .rec-names a, .rec-names a:hover, .rec-names a:active, .rec-names a:visited {
-	color: #000000;
+	color: #19373D;
 }
 
 .page-background {
 	background-color: #7B8D91;
+}
+
+.event-page-info {
+	color: #ffffff;
+	font-family: 'Domine', serif;
 }
 
 /*.rec-panel a:hover {
