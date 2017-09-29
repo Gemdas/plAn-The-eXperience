@@ -1,13 +1,13 @@
 
 .navigation {
-	background-color: #415c61 !important;
+	background-color: #19373D !important;
 	list-style-type: none;
 }
 
 .navigation li {
 	color: #ffffff !important;
-	font-family: 'Amatic SC', cursive;
-	font-size: 36px;
+	font-family: 'Bungee Shade', cursive;
+	font-size: 24px;
 }
 
 .navigation a {
@@ -15,10 +15,9 @@
 }
 
 #event-title {
-	font-family: 'Amatic SC', cursive;
+	font-family: 'Kavoon', cursive;
 	text-align: center;
 	font-size: 70px;
-	font-weight: bold;
 }
 
 .logo {
@@ -52,10 +51,19 @@
 .search-div {
 	width: 100%;
 	margin: auto;
+	padding-top: 100px;
 	padding: 50px;
 	background-image: url("../images/skyline.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
+}
+
+#banner {
+	font-size: 64px;
+	text-align: center;
+	color: #ffffff;
+	font-family: 'Domine', serif;
+	font-weight: bold;
 }
 
 .front {
@@ -76,7 +84,7 @@
 .flip .back {
     width: 350px;
     height: 275px;
-    background: #415c61;
+    background: #19373D;
     color: #fff;
 }
 
@@ -88,9 +96,10 @@
 }
 
 .rec-header {
-    font-family: 'Amatic SC', cursive;
+    font-family: 'Bungee Shade', cursive;
     font-weight: bold;
-    font-size: 48px;
+    font-size: 64px;
+    color: #ffffff;
 }
 
 .recommendations {
@@ -179,3 +188,38 @@ li i {
 .addBtn {
 	padding: 5px;
 }
+
+.successBtn {
+	color: #ffffff !important;
+}
+
+.check-icon {
+	color: #006400;
+}
+
+.pre-panel {
+	background-image: url("../images/before.jpeg");
+	background-size: 100% 100%;
+}
+
+.bites-panel {
+	background-image: url("../images/sushi.jpeg");
+	background-size: 100% 100%;
+}
+
+.after-panel {
+	background-image: url("../images/drinks.jpeg");
+	background-size: 100% 100%;
+}
+
+.rec-names a, .rec-names a:hover, .rec-names a:active, .rec-names a:visited {
+	color: #000000;
+}
+
+.page-background {
+	background-color: #7B8D91;
+}
+
+/*.rec-panel a:hover {
+	color: #000000;
+} */

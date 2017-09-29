@@ -14,11 +14,11 @@ $(document).ready(function(){
 
 		if ($(this).data("state") === "plus") {
 			$(this).removeClass("fi-plus");
-			$(this).addClass("fi-check");
+			$(this).addClass("fi-check check-icon");
 			$(this).data("state", "check");
 			addToItinerary($(this).data("icon-id"));
 		} else if ($(this).data("state") === "check") {
-			$(this).removeClass("fi-check");
+			$(this).removeClass("fi-check check-icon");
 			$(this).addClass("fi-plus");
 			$(this).data("state", "plus");
 			removeFromItinerary($(this).data("icon-id"));
@@ -30,11 +30,11 @@ $(document).ready(function(){
 
 		if ($(this).data("state") === "plus") {
 			$(this).removeClass("fi-plus");
-			$(this).addClass("fi-check success");
+			$(this).addClass("fi-check success successBtn");
 			$(this).data("state", "check");
 			addToItinerary($(this).data("icon-id"));
 		} else if ($(this).data("state") === "check") {
-			$(this).removeClass("fi-check success");
+			$(this).removeClass("fi-check success successBtn");
 			$(this).addClass("fi-plus primary");
 			$(this).data("state", "plus");
 			removeFromItinerary($(this).data("icon-id"));
@@ -69,7 +69,6 @@ $(document).ready(function(){
 
 
 	}
-
 
 	//send the eventful api the id
 	EVDB.API.call("/events/get", oArgs, function(oData) {
@@ -167,6 +166,5 @@ $(document).ready(function(){
 
 
 	});
-
 
 });
