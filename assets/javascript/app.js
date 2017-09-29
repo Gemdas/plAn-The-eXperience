@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 // Getting the users IP address	
 /*	var ipAddress;
 	var ipify='https://api.ipify.org?format=jsonp&callback=?';
