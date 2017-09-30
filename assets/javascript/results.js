@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	
 	// Grab query parameter from URL
 	var urlQueryString = location.search;
 	var encodedWords = urlQueryString.split('=');
