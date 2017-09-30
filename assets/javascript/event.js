@@ -4,7 +4,7 @@ $(document).ready(function(){
 	console.log(itineraryArray)
 	//var LSArray=JSON.parse(localStorage.getItem("event"))||[];
 	var recArray = [];
-	// addToLocalStorage();
+	addToLocalStorage();
 
 	//get event id
 	var eventfulURL = "http://eventful.com/events?";
@@ -40,19 +40,20 @@ $(document).ready(function(){
 		//revert the check and plus symbols on main page(ie. outside the modal)
 		itiRemoveData=$("#add-event").data("icon-id");
 		//$("#add-event").data("state","check");
-		$("#add-event").removeClass("fi-check success");
-		$("#add-event").addClass("fi-plus primary");
-		$("#add-event").data("state", "plus");
-
-		if($(this).attr("data-id") === $(".addBtn").data("icon-id")){
-			
-			if($(".addBtn").data("state"==="check")){
-			$(".icon addBtn").removeClass("fi-check");
-			$(".icon addBtn").addClass("fi-plus");
-			$(".icon addBtn").data("state", "plus");
-			}
+		var itival = $(this).attr("data-id");
+		if(itival===($("#add-event").data("icon-id"))){
+			$("#add-event").removeClass("fi-check success");
+			$("#add-event").addClass("fi-plus primary");
+			$("#add-event").data("state", "plus");
 		}
-		removeFromItinerary(itiRemoveData);
+		if(itival === ($(".icon").data("icon-id"))){
+			var resetCheck=$(".icon").data("icon-id");
+			resetCheck.removeClass("fi-check");
+			resetCheck.addClass("fi-plus");
+			resetCheck.data("state", "plus");
+			
+		}
+		//removeFromItinerary(itiRemoveData);
 		//update the local storage
 		localStorage.setItem("event", JSON.stringify(itineraryArray));
 	});
