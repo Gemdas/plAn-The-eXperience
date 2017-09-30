@@ -6,12 +6,13 @@
 	<!-- Compressed CSS -->
 	<link rel="stylesheet" href="foundation/css/foundation.css">
     <link rel="stylesheet" href="foundation/css/app.css">
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Changa+One|Domine|Amatic+SC|Kavoon|Slabo+27" rel="stylesheet">
+	<link rel="stylesheet" href="foundation/css/foundation-icons/foundation-icons.css" />
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
 
-<div class="wrapper">
+<div class="wrapper page-background">
 	<div class="top-bar navigation" id="example-menu">
 		<div class="top-bar-left">
 			<ul class="menu navigation">
@@ -23,8 +24,8 @@
 		</div>
 	</div>
 
-	<div class="small reveal page-font itinerary" id="itineraryModal" data-reveal>
-		<table class="hover" id="itineraryTable">
+	<div class="small reveal page-font itinerary table-scroll" id="itineraryModal" data-reveal>
+		<table class="hover tablesorter" id="itineraryTable">
 			<thead>
 				<th>To Do</th>
 				<th>Time</th>
@@ -35,7 +36,8 @@
 
 	<div class="grid-x search-div">
 		<div class="medium-12 cell">
-			<div class="logo-div"><img src="assets/images/ATXperience.png" class="logo"></div>
+			<div id="banner"></div>
+			<!-- <div class="logo-div"><img src="assets/images/ATXperience.png" class="logo"></div> -->
 			<form>
 				<div class="input-group">
 					<input class="input-group-field" type="text" placeholder="Event Name or Keyword" id="searchInput">
@@ -150,9 +152,34 @@
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/jquery.typeit/4.4.0/typeit.min.js"></script>
 <script src="assets/javascript/app.js" type="text/javascript" charset="utf-8" async defer></script>
 
 <script>
+
+	$('#banner').typeIt({
+	     speed: 100,
+	     breakLines: false,
+	     autoStart: false,
+	     deleteSpeed: 75
+	})
+
+	.tiType("Plan your next adventure")
+	.tiPause(2000)
+	.tiDelete(9)
+	.tiPause(2000)
+	.tiType("date night")
+	.tiPause(2000)
+	.tiDelete(10)
+	.tiPause(2000)
+	.tiType("Sunday funday")
+	.tiPause(3000)
+	.tiPause(2000)
+	.tiDelete()
+	.tiPause(2000)
+	.tiSettings({speed: 75})
+	.tiType("Look forward to your to do list");
+
 	$(function(){
 		$(".flip").flip({
 			trigger: 'hover'
