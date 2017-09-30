@@ -1,4 +1,11 @@
 $(document).ready(function(){
+	//add results to itinerary
+	var  itineraryArray=[];
+	console.log(itineraryArray)
+	//var LSArray=JSON.parse(localStorage.getItem("event"))||[];
+	var recArray = [];
+	addToLocalStorage();
+
 	//get event id
 	var eventfulURL = "http://eventful.com/events?";
 	var eventfulID = (location.search).substring((location.search).indexOf("=")+1);
@@ -7,68 +14,108 @@ $(document).ready(function(){
 		id:eventfulID
 	};
 
-	var itineraryArray = [];
-	var recArray = [];
-
-	$(".icon").on("click", function(event) {
-
+	$(".icon").on("click", function(event) {	
 		if ($(this).data("state") === "plus") {
 			$(this).removeClass("fi-plus");
 			$(this).addClass("fi-check");
 			$(this).data("state", "check");
-			addToItinerary($(this).data("icon-id"));
-		} else if ($(this).data("state") === "check") {
+			var itiData= $(this).data("icon-id");
+			addToItinerary(itiData);
+		}else if($(this).data("state") === "check") {
 			$(this).removeClass("fi-check");
 			$(this).addClass("fi-plus");
 			$(this).data("state", "plus");
-			removeFromItinerary($(this).data("icon-id"));
-		} 
-
+			var itiRemoveData=$(this).data("icon-id");
+			removeFromItinerary(itiRemoveData);
+		}
 	})
 
-	$("#add-event").on("click", function(event) {
+	$("#itineraryModal").on("click",".fi-minus",function(event){	
+		//delete the item from the itineraryArray
+		var itemIndex = itineraryArray.indexOf($(this).attr("data-id"));
+		itineraryArray.splice(itemIndex, 1);
+		// delete the itm from the modal
+		var targetRow=$(this).parent();
+		targetRow.remove();
+		//revert the check and plus symbols on main page(ie. outside the modal)
+		itiRemoveData=$("#add-event").data("icon-id");
+		//$("#add-event").data("state","check");
+		$("#add-event").removeClass("fi-check success");
+		$("#add-event").addClass("fi-plus primary");
+		$("#add-event").data("state", "plus");
 
+		if($(this).attr("data-id") === $(".addBtn").data("icon-id")){
+			
+			if($(".addBtn").data("state"==="check")){
+			$(".icon addBtn").removeClass("fi-check");
+			$(".icon addBtn").addClass("fi-plus");
+			$(".icon addBtn").data("state", "plus");
+			}
+		}
+		removeFromItinerary(itiRemoveData);
+		//update the local storage
+		localStorage.setItem("event", JSON.stringify(itineraryArray));
+	});
+
+	$("#add-event").on("click", function(event) {
 		if ($(this).data("state") === "plus") {
 			$(this).removeClass("fi-plus");
 			$(this).addClass("fi-check success");
 			$(this).data("state", "check");
-			addToItinerary($(this).data("icon-id"));
+			var itiData= $(this).data("icon-id");
+			addToItinerary(itiData);
+			
 		} else if ($(this).data("state") === "check") {
 			$(this).removeClass("fi-check success");
 			$(this).addClass("fi-plus primary");
 			$(this).data("state", "plus");
-			removeFromItinerary($(this).data("icon-id"));
+			var itiRemoveData=$(this).data("icon-id");
+			removeFromItinerary(itiRemoveData);	
+			
 		} 
 	})
+	
+     // createArray(itineraryArray[i]);
+     function addToLocalStorage(item){
+     	/*if (LSArray.indexOf(item) > -1) {
+     		console.log("already added");
+     	}else{*/
+     		
+	 		LSArray= JSON.parse(localStorage.event);
+	 		 $.each(LSArray, function(index, item) {
+	 		 	addToItinerary(item);
+	 		 })
+     	//}
+     }
 
+     function addToItinerary(item) {
+     	
+     	if (itineraryArray.indexOf(item) > -1) {
+     		console.log("already added");
 
-	function addToItinerary(item) {
+     	}else{		
+	 		itineraryArray.push(item);		
+			localStorage.setItem("event", JSON.stringify(itineraryArray));
+					var createRow = $("<tr>")
+					var removeIcon = $("<td>").attr({"class":"fi-minus icon","data-state":"minus","data-id":item});
+					var newItem = $("<td>").attr("data-id",item).text(item);
+					var newInputBox = $("<input>").attr("type", "time");
+					var newTime = $("<td>").attr("data-id", item).append(newInputBox);
+					var newRow = createRow.append(removeIcon).append(newItem).append(newTime).attr("data-id", item);
+					$("#itineraryTable").append(newRow);
+				
+				}
+			}	
 
-		
-		if (itineraryArray.indexOf(item) > -1) {
-			console.log("already added");
-		} else {
-			itineraryArray.push(item);
-			var createRow = $("<tr>")
-			var newItem = $("<td>").attr("data-id", item).text(item);
-			var newInputBox = $("<input>").attr("type", "time");
-			var newTime = $("<td>").attr("data-id", item).append(newInputBox);
-			var newRow = createRow.append(newItem).append(newTime).attr("data-id", item);
-			$("#itineraryTable").append(newRow);
+		function removeFromItinerary(item) {
+
+			var itemIndex = itineraryArray.indexOf(item);
+			itineraryArray.splice(itemIndex, 1);
+			$('#itineraryTable tr[data-id="' + item + '"]').remove();
+			localStorage.setItem("event", JSON.stringify(itineraryArray));
+			console.log(JSON.parse(localStorage.event));
 		}
 
-	}
-
-	function removeFromItinerary(item) {
-
-		var itemIndex = itineraryArray.indexOf(item);
-		itineraryArray.splice(itemIndex, 1);
-		console.log(itineraryArray);
-
-		$('#itineraryTable tr[data-id="' + item + '"]').remove();
-
-
-	}
 
 
 	//send the eventful api the id
