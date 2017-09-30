@@ -4,7 +4,7 @@ $(document).ready(function(){
 	console.log(itineraryArray)
 	//var LSArray=JSON.parse(localStorage.getItem("event"))||[];
 	var recArray = [];
-	addToLocalStorage();
+	// addToLocalStorage();
 
 	//get event id
 	var eventfulURL = "http://eventful.com/events?";
