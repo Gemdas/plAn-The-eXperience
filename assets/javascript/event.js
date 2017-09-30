@@ -4,7 +4,7 @@ $(document).ready(function(){
 	console.log(itineraryArray)
 	//var LSArray=JSON.parse(localStorage.getItem("event"))||[];
 	var recArray = [];
-	// addToLocalStorage();
+	addToLocalStorage();
 
 	//get event id
 	var eventfulURL = "http://eventful.com/events?";
@@ -37,6 +37,8 @@ $(document).ready(function(){
 		// delete the itm from the modal
 		var targetRow=$(this).parent();
 		targetRow.remove();
+		localStorage.setItem("event", JSON.stringify(itineraryArray));
+		console.log(itineraryArray);
 		//revert the check and plus symbols on main page(ie. outside the modal)
 		itiRemoveData=$("#add-event").data("icon-id");
 		//$("#add-event").data("state","check");
@@ -47,14 +49,13 @@ $(document).ready(function(){
 		if($(this).attr("data-id") === $(".addBtn").data("icon-id")){
 			
 			if($(".addBtn").data("state"==="check")){
-			$(".icon addBtn").removeClass("fi-check");
-			$(".icon addBtn").addClass("fi-plus");
-			$(".icon addBtn").data("state", "plus");
+			$(".icon ").removeClass("fi-check");
+			$(".icon ").addClass("fi-plus");
+			$(".icon ").data("state", "plus");
 			}
 		}
-		removeFromItinerary(itiRemoveData);
-		//update the local storage
-		localStorage.setItem("event", JSON.stringify(itineraryArray));
+		
+
 	});
 
 	$("#add-event").on("click", function(event) {
@@ -93,7 +94,8 @@ $(document).ready(function(){
      	if (itineraryArray.indexOf(item) > -1) {
      		console.log("already added");
 
-     	}else{		
+     	}else{	
+     		console.log(itineraryArray);	
 	 		itineraryArray.push(item);		
 			localStorage.setItem("event", JSON.stringify(itineraryArray));
 					var createRow = $("<tr>")
