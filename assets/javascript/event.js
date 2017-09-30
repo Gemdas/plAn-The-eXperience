@@ -23,7 +23,6 @@ $(document).ready(function(){
 		} else if ($(this).data("state") === "check") {
 			$(this).removeClass("fi-check check-icon");
 			$(this).addClass("fi-plus plus-icon");
-
 			$(this).data("state", "plus");
 			var itiRemoveData=$(this).data("icon-id");
 			removeFromItinerary(itiRemoveData);
@@ -46,13 +45,16 @@ $(document).ready(function(){
 			$("#add-event").addClass("fi-plus primary");
 			$("#add-event").data("state", "plus");
 		}
-		if(itival === ($(".icon").data("icon-id"))){
-			var resetCheck=$(".icon").data("icon-id");
-			resetCheck.removeClass("fi-check");
+		if(itival === $(".icon").data("icon-id")){
+			var resetCheck= $(".check-icon").data("icon-id");
+			//resetCheck.removeClass("fi-check plus-icon");
 			resetCheck.addClass("fi-plus");
 			resetCheck.data("state", "plus");
+		
 			
 		}
+			console.log("Itival: "+itival);
+			console.log('resetCheck: '+resetCheck)
 		//removeFromItinerary(itiRemoveData);
 		//update the local storage
 		localStorage.setItem("event", JSON.stringify(itineraryArray));
@@ -101,8 +103,8 @@ $(document).ready(function(){
 					var removeIcon = $("<td>").attr({"class":"fi-minus icon","data-state":"minus","data-id":item});
 					var newItem = $("<td>").attr("data-id",item).text(item);
 					var newInputBox = $("<input>").attr("type", "time");
-					var newTime = $("<td>").attr("data-id", item).append(newInputBox);
-					var newRow = createRow.append(removeIcon).append(newItem).append(newTime).attr("data-id", item);
+					//var newTime = $("<td>").attr("data-id", item).append(newInputBox);
+					var newRow = createRow.append(removeIcon).append(newItem).attr("data-id", item);
 					$("#itineraryTable").append(newRow);
 				
 				}
